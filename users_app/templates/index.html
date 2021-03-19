@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Users With Templates</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">    
+       
+        
+    </head>
+    <body>
+
+        <h1>All the Users</h1>
+      
+
+        <table>
+            <TD><div class="c1">Id</div>
+            <TD><div class="c1">First Name</div></TD>
+            <TD><div class="c1">Last Name</div></TD>
+            <TD><div class="c1">Email</div></TD>
+            <TD><div class="c1">Age</div></TD>
+            {% for user in all_users %}
+            <TR>
+                <TD><div class="c1">{{ user.id }}</div></TD>
+                <TD><div class="c2">{{user.first_name}}</div></TD>
+                <TD><div class="c1">{{user.last_name}}</div></TD>
+                <TD><div class="c1"><SPAN>{{user.email_address}}</div></SPAN></TD>
+                <TD><div class="c1"><SPAN>{{user.age}}</div></SPAN></TD>
+            </TR>
+            {% endfor %}
+        </table>
+
+        <hr>
+        <form action="/register" method="post">
+            {% csrf_token %}
+            <h1>Add a User</h1>
+
+            <label for="first_name">First Name:</label>
+            <input type="text" id="first_name" name="first_name">
+        
+            <label for="last_name">Last Name:</label>
+            <input type="text" id="last_name" name="last_name">
+        
+            <label for="email">Email:</label>
+            <input type="text" id="email" name="email_address">
+
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age">
+            
+            <input type="submit" value="Click here to register">
+         </form>
+    </body>
+</html>
